@@ -22,17 +22,20 @@ for(const btn of allbtn){
         const p2 = document.createElement('p');
         p2.innerText = price;
 
+        e.target.parentNode.parentNode.style.backgroundColor = 'gray';
+
         li.appendChild(p);
         li.appendChild(p2);
 
-
         const budget = document.getElementById('budget').innerText;
-
         const convertedBudget = parseInt(budget);
+
+        if (convertedBudget - parseInt(price)<0){
+            alert('low budget please earn more')
+            return;
+        }
+
         document.getElementById('budget').innerText = convertedBudget - parseInt(price);
-
-
-
 
 
 

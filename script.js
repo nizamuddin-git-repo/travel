@@ -24,19 +24,68 @@ for(const btn of allbtn){
 
         li.appendChild(p);
         li.appendChild(p2);
+
+
+        const budget = document.getElementById('budget').innerText;
+
+        const convertedBudget = parseInt(budget);
+        document.getElementById('budget').innerText = convertedBudget - parseInt(price);
+
+
+
+
+
+
+
+
+
         selectedContainer.appendChild(li);
 
 
-        const totalCost = document.getElementById('total-cost').innerText;
 
-        const convertedTotalCost = parseInt(totalCost);
-        const sum = convertedTotalCost + parseInt(price);
+        totalCost('total-cost', parseInt(price));
+        
+  
+        
+        grandTotalCost('grand-total', parseInt(price))
+        
 
-        setInnerText('total-cost', sum);
-       setInnerText('card-count', count);
+        setInnerText('card-count', count);
+
+
     });
 }
+
 
 function setInnerText(id, value){
     document.getElementById(id).innerText = value;
 }
+
+
+    function totalCost (id, value){
+        const totalCost = document.getElementById(id).innerText;
+        const convertedTotalCost = parseInt(totalCost);
+        const sum = convertedTotalCost + parseInt(value);
+        setInnerText('total-cost', sum);
+        
+    }
+    
+    function grandTotalCost(category) {
+
+        const totalCost = document.getElementById('total-cost').innerText;
+        const convertedTotalCost = parseInt(totalCost);
+
+        if (category === 'bus'){
+            setInnerText('grand-total', convertedTotalCost + 100);
+        }
+        else if (category === 'trin'){
+            setInnerText('grand-total', convertedTotalCost - 200);
+        }
+        else if (category === 'flight'){
+            setInnerText('grand-total', convertedTotalCost + 500);
+        }
+        else{
+            setInnerText('grand-total', convertedTotalCost);
+        }
+    }
+    
